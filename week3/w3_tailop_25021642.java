@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class w3_tailop_masv {
+public class w3_tailop_25021642 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
@@ -14,14 +14,14 @@ public class w3_tailop_masv {
             if (ch == ' ') continue;
 
             if (Character.isLetterOrDigit(ch)) {
-                ans += ch;
+                ans += ch + " ";
             }
             else if (ch == '(') {
                 st.push(ch);
             }
             else if (ch == ')') {
                 while (!st.empty() && st.peek() != '(') {
-                    ans += st.pop();
+                    ans += st.pop() + " ";
                 }
                 if (!st.empty()) {
                     st.pop();
@@ -30,15 +30,19 @@ public class w3_tailop_masv {
 
             else {
                 while (!st.empty() && st.peek() != '(' && score(st.peek()) >= score(ch)) {
-                    ans += st.pop();
+                    ans += st.pop() + " ";
                 }
                 st.push(ch);
             }
         }
         while (!st.empty()) {
-            ans += st.pop();
+            ans += st.pop() + " ";
         }
-        System.out.println(ans);
+        StringBuilder res = new StringBuilder(ans);
+        if (res.length() > 0) {
+            res.deleteCharAt(res.length() - 1);
+        }
+        System.out.println(res);
     }
 
     public static int score(char op) {
