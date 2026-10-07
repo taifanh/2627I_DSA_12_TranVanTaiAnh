@@ -55,41 +55,41 @@ public class SimpleTextEditor {
 
         System.out.print(out);
     }
-}
 
-class FastIO {
-    BufferedReader br;
-    StringTokenizer st;
+    static class FastIO {
+        BufferedReader br;
+        StringTokenizer st;
 
-    FastIO() {
-        br = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            String line = br.readLine();
-            if (line != null) {
-                st = new StringTokenizer(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    String next() {
-        while (st == null || !st.hasMoreTokens()) {
+        FastIO() {
+            br = new BufferedReader(new InputStreamReader(System.in));
             try {
                 String line = br.readLine();
-                if (line == null) return null;
-                st = new StringTokenizer(line);
+                if (line != null) {
+                    st = new StringTokenizer(line);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
-                return null;
             }
         }
-        return st.nextToken();
-    }
 
-    int nextInt() {
-        String token = next();
-        if (token == null) return 0;
-        return Integer.parseInt(token);
+        String next() {
+            while (st == null || !st.hasMoreTokens()) {
+                try {
+                    String line = br.readLine();
+                    if (line == null) return null;
+                    st = new StringTokenizer(line);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            String token = next();
+            if (token == null) return 0;
+            return Integer.parseInt(token);
+        }
     }
 }
